@@ -1,0 +1,221 @@
+/* General Styles for Light Theme */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #1e1e1e;
+    color: #f4f4f4;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+    margin-right: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 30px 0;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme header {
+    background-color: #0056b3;
+}
+
+/* Card Section */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: white;
+}
+
+body.dark-theme .card-container {
+    background-color: #2e2e2e;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-theme .card {
+    background-color: #3a3a3a;
+    color: #f4f4f4;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme button {
+    background-color: #0056b3;
+}
+
+/* Sensor Diagnostics Section */
+.sensor-diagnostics {
+    background-color: #f4f4f4;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+body.dark-theme .sensor-diagnostics {
+    background-color: #2e2e2e;
+}
+
+.sensor-status {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sensor {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.working {
+    color: green;
+    background-color: #e6ffe6;
+}
+
+body.dark-theme .working {
+    background-color: #204c20;
+}
+
+.offline {
+    color: gray;
+    background-color: #f0f0f0;
+}
+
+body.dark-theme .offline {
+    background-color: #444444;
+}
+
+.error {
+    color: red;
+    background-color: #ffe6e6;
+}
+
+body.dark-theme .error {
+    background-color: #5a1a1a;
+}

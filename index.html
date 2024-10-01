@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mall Parking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <!-- Theme Toggle Switch -->
+            <li class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+                    <span class="slider"></span>
+                </label>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Mall Parking System</h1>
+        <p>Efficient and Smart Parking Solutions</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="card-container">
+            <!-- Card 1 -->
+            <div class="card" id="car1">
+                <h2>Ravi's Car</h2>
+                <img src="car1.png" alt="Ravi's Car">
+                <p>Number Plate: KA-01-HH-1234</p>
+                <p>Status: <span class="status parked">Parked</span></p>
+                <button onclick="changeStatus('car1')">Change Status</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="card" id="car2">
+                <h2>Priya's Car</h2>
+                <img src="car2.png" alt="Priya's Car">
+                <p>Number Plate: KA-02-HH-5678</p>
+                <p>Status: <span class="status over-time">Over Time Limit</span></p>
+                <button onclick="changeStatus('car2')">Change Status</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="card" id="car3">
+                <h2>Sameer's Car</h2>
+                <img src="car3.png" alt="Sameer's Car">
+                <p>Number Plate: KA-03-HH-9012</p>
+                <p>Status: <span class="status servicing">In Servicing</span></p>
+                <button onclick="changeStatus('car3')">Change Status</button>
+            </div>
+        </section>
+
+        <!-- Sensor Diagnostics Section -->
+        <section class="sensor-diagnostics">
+            <h2>Parking Sensor Diagnostics</h2>
+            <div class="sensor-status">
+                <p>Sensor A1: <span class="sensor working">Working</span></p>
+                <p>Sensor B2: <span class="sensor offline">Offline</span></p>
+                <p>Sensor C3: <span class="sensor working">Working</span></p>
+                <p>Sensor D4: <span class="sensor error">Error</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
