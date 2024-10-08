@@ -36,7 +36,7 @@
             <!-- Card 1 -->
             <div class="card" id="car1">
                 <h2>Ravi's Car</h2>
-                <img src="car1.png" alt="Ravi's Car">
+                <img src="{{url_for('static', filename='images/car1.png')}}" alt="Ravi's Car">
                 <p>Number Plate: KA-01-HH-1234</p>
                 <p>Status: <span class="status parked">Parked</span></p>
                 <button onclick="changeStatus('car1')">Change Status</button>
@@ -44,7 +44,7 @@
             <!-- Card 2 -->
             <div class="card" id="car2">
                 <h2>Priya's Car</h2>
-                <img src="car2.png" alt="Priya's Car">
+                <img src="{{url_for('static', filename='images/car1.png')}}" alt="Priya's Car">
                 <p>Number Plate: KA-02-HH-5678</p>
                 <p>Status: <span class="status over-time">Over Time Limit</span></p>
                 <button onclick="changeStatus('car2')">Change Status</button>
@@ -52,7 +52,7 @@
             <!-- Card 3 -->
             <div class="card" id="car3">
                 <h2>Sameer's Car</h2>
-                <img src="car3.png" alt="Sameer's Car">
+                <img src="{{url_for('static', filename='images/car1.png')}}" alt="Sameer's Car">
                 <p>Number Plate: KA-03-HH-9012</p>
                 <p>Status: <span class="status servicing">In Servicing</span></p>
                 <button onclick="changeStatus('car3')">Change Status</button>

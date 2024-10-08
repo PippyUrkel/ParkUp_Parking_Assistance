@@ -10,7 +10,7 @@ function changeStatus(carId) {
     let currentStatusIndex = statuses.indexOf(statusElement.innerText);
     
     // Cycle to the next status
-    let nextStatusIndex = (currentStatusIndex + 1) % statuses.length;
+    let nextStatusIndex = (currentStatusIndex + 1) % statuses.length; // this is kinda like circular queue lol
     
     // Update the status text and class
     statusElement.innerText = statuses[nextStatusIndex];
