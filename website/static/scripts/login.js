@@ -1,32 +1,44 @@
-// Form submission handler
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyApIeHWZMoXt4Cn2rQF5YJeZZPjaNBnLn4",
+    authDomain: "parkup-assistance.firebaseapp.com",
+    projectId: "parkup-assistance",
+    storageBucket: "parkup-assistance.appspot.com",
+    messagingSenderId: "590139168888",
+    appId: "1:590139168888:web:2e59fb8f6b865c2baf358d",
+    measurementId: "G-5YT7FQHXGC"
+  };
+  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
-    // Get form data
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    // Basic client-side validation (optional)
-    if (email === "" || password === "") {
-        document.getElementById('error-message').textContent = "Please fill in all fields.";
-    } else {
-        // TODO: Handle Firebase Authentication here
-        console.log("Login attempt:", email, password);
-
-        // Clear the error message
-        document.getElementById('error-message').textContent = "";
-    }
-});
-
-// Handle Google login button click
+// Google Login Button Event Listener
 document.getElementById('google-login-btn').addEventListener('click', function() {
-    // TODO: Integrate Google Login Authentication here
-    console.log("Google login clicked");
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log("User signed in:", result.user);
+            // You can redirect or update UI here after successful login
+        })
+        .catch((error) => {
+            console.error("Error during sign in:", error);
+            document.getElementById('error-message').textContent = error.message; // Display error message
+        });
 });
 
-// Handle Google signup button click
+// Google Sign Up Button Event Listener (if needed)
 document.getElementById('google-signup-btn').addEventListener('click', function() {
-    // TODO: Integrate Google Sign-Up Authentication here
-    console.log("Google sign up clicked");
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log("User signed up:", result.user);
+            // You can redirect or update UI here after successful sign up
+        })
+        .catch((error) => {
+            console.error("Error during sign up:", error);
+            document.getElementById('error-message').textContent = error.message; // Display error message
+        });
 });
-

@@ -4,37 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login or Sign Up with Google</title>
-    <!-- Link to external CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
 <body>
 
     <div class="container">
-        <!-- Left Section: Login -->
         <div class="login-section">
             <div class="login-container">
                 <h2>Welcome</h2>
                 <p>Sign in or create a new account</p>
 
-                <!-- Error message placeholder -->
                 <div class="error" id="error-message"></div>
 
-                <!-- Google Login Button -->
-                <button id="google-login-btn">
-                    Sign in with Google
-                </button>
-
-                <!-- Google Sign Up Button -->
-                <button id="google-signup-btn">
-                    Sign up with Google
-                </button>
+                <button id="google-login-btn">Sign in with Google</button>
+                <button id="google-signup-btn">Sign up with Google</button>
             </div>
         </div>
 
-        <!-- Divider -->
         <div class="divider"></div>
 
-        <!-- Right Section: Video -->
         <div class="video-section">
             <div class="video-container">
                 <video autoplay muted loop>
@@ -45,8 +33,9 @@
         </div>
     </div>
 
-    <!-- Link to external JS -->
-    <script src="{{ url_for('static', filename='scripts/login.js') }}"></script>
-
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js" defer></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js" defer></script>
+    <script type="module" src="{{ url_for('static', filename='scripts/login.js') }}" defer></script>
+    
 </body>
 </html>

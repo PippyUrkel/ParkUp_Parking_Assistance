@@ -166,3 +166,5 @@ serviceKey.json
 
 #Firebase Config File 
 config
+website/static/scripts/firebase_config.js
+firebase_secret.json
