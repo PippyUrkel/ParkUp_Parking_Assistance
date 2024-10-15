@@ -1,10 +1,10 @@
-import firebase_admin
-from firebase_admin import credentials, firestore
+import pyrebase
+from config.firebase_config import firebase_config  # Import the hidden config
 
-# Initialize Firebase app
-cred = credentials.Certificate('serviceKey.json')
-firebase_admin.initialize_app(cred)
+firebase = pyrebase.initialize_app(firebase_config)
+db = firebase.database()
+auth = firebase.auth()
 
-# Access Firestore
-db = firestore.client()
-
+# Example function for adding data
+def add_data(path, data):
+    db.child(path).set(data)

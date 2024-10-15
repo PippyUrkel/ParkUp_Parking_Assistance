@@ -1,0 +1,142 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main container: Split view */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left Section: Login */
+.login-section {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Login Container */
+.login-container {
+    background-color: #fff;
+    color: #333;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-container h2 {
+    font-size: 28px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Google Button Styles (both login and signup) */
+button#google-login-btn, button#google-signup-btn {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+button#google-login-btn img, button#google-signup-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+button#google-login-btn:hover, button#google-signup-btn:hover {
+    background-color: #357ae8;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+.divider {
+    width: 2px;
+    background-color: #ddd;
+    height: 80%;
+    margin: auto 0;
+}
+
+/* Right Section: Video */
+.video-section {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eef2f7;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.video-container {
+    width: 80%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .login-section, .video-section {
+        width: 100%;
+        height: 50%;
+    }
+
+    .divider {
+        display: none;
+    }
+}
