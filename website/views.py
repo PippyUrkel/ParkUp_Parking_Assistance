@@ -18,3 +18,7 @@ def add_data():
         'email': 'andre@example.com'
     })
     return 'Data added!'
+
+@views.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')

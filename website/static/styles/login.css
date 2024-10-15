@@ -24,7 +24,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #2b05d4 0%, #12bed4 100%); /* Dark gradient background */
-    animation: slideIn 1s ease-in;
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Login Container */

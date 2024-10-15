@@ -22,13 +22,15 @@ document.getElementById('google-login-btn').addEventListener('click', function()
     signInWithPopup(auth, provider)
         .then((result) => {
             console.log("User signed in:", result.user);
-            // You can redirect or update UI here after successful login
+            // Redirect to a specific route, for example, '/dashboard'
+            window.location.href = '/dashboard'; // Change this to your desired route
         })
         .catch((error) => {
             console.error("Error during sign in:", error);
             document.getElementById('error-message').textContent = error.message; // Display error message
         });
 });
+
 
 // Google Sign Up Button Event Listener (if needed)
 document.getElementById('google-signup-btn').addEventListener('click', function() {
