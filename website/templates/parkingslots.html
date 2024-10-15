@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Slots</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .center {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url({{ url_for('static', filename='images/bgforparking.jpg') }});
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tickets {
+      width: 600px;
+      height: 470px;
+      border: 0.4mm solid rgba(0, 0, 0, 0.903);
+      border-radius: 3mm;
+      box-sizing: border-box;
+      padding: 10px;
+      font-family: Poppins, sans-serif;
+      background: rgba(207, 196, 196, 0.238);
+      box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+      overflow-y: auto;
+    }
+    .ticket-selector {
+      background: rgba(221, 216, 216, 0.726); /* Pure white with transparency */
+      display: flex;
+      border-radius: 3mm;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    .seats {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+    }
+    .all-seats {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+      position: relative;
+    }
+    .seat {
+      width: 30px; /* Retained width */
+      height: 60px; /* Increased height for vertical rectangle */
+      background: white;
+      border-radius: 1mm; /* Slight border radius */
+      outline: 0.3mm solid rgb(180, 180, 180);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+    .seat.booked {
+      background: rgb(180, 180, 180);
+      border: 2px solid black; /* 2px width, solid style, black color */
+    }
+    .seat.allocated {
+      background: rgb(28, 185, 120);
+      color: white;
+    }
+    input {
+      display: none;
+    }
+    .path {
+      grid-column: span 10;
+      height: 20px;
+      background: #444;
+    }
+    .btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    button {
+      background-color: rgb(60, 60, 60);
+      color: white;
+      padding: 10px;
+      border-radius: 2mm;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="tickets">
+      <div class="ticket-selector">
+        <div class="seats">
+          <div class="all-seats" id="all-seats">
+            <!-- Generate parking slots dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="btn-container">
+        <button id="confirm-btn">Confirm</button>
+        <button id="next-floor-btn">Next Floor</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate parking slots dynamically
+    const allSeatsDiv = document.getElementById('all-seats');
+    for (let i = 1; i <= 30; i++) {
+      const seatLabel = document.createElement('label');
+      seatLabel.classList.add('seat');
+      seatLabel.setAttribute('for', 's' + i);
+      seatLabel.textContent = 'J-' + i;
+
+      const seatInput = document.createElement('input');
+      seatInput.type = 'checkbox';
+      seatInput.id = 's' + i;
+
+      allSeatsDiv.appendChild(seatInput);
+      allSeatsDiv.appendChild(seatLabel);
+
+      if (i % 10 === 0) {
+        const pathDiv = document.createElement('div');
+        pathDiv.classList.add('path');
+        allSeatsDiv.appendChild(pathDiv);
+      }
+    }
+
+    // Simulate some spots as already booked
+    const bookedSpots = ['J-5', 'J-10', 'J-25', 'J-35', 'J-55'];
+    document.querySelectorAll('.seat').forEach(seat => {
+      if (bookedSpots.includes(seat.textContent)) {
+        seat.classList.add('booked');
+      }
+    });
+
+    // Handle seat selection
+    document.querySelectorAll('.seat').forEach(seat => {
+      seat.addEventListener('click', function() {
+        if (!this.classList.contains('booked')) {
+          this.classList.toggle('allocated');
+        }
+      });
+    });
+
+    // Handle confirm button
+    document.getElementById('confirm-btn').addEventListener('click', function() {
+      const allocatedSeats = document.querySelectorAll('.seat.allocated');
+      allocatedSeats.forEach(seat => {
+        seat.classList.remove('allocated');
+        seat.classList.add('booked');
+      });
+      alert('Parking slots allocated!');
+    });
+
+    // Handle next floor button
+    document.getElementById('next-floor-btn').addEventListener('click', function() {
+      alert('Switching to the next floor!');
+      // Add logic for next floor parking slots
+    });
+  </script>
+</body>
+</html>

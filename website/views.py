@@ -14,3 +14,8 @@ def add_data():
         'email': 'andre@example.com'
     })
     return 'Data added!'
+
+@views.route('/parkingslots')
+def parkingslots():
+    return render_template('parkingslots.html')
+
