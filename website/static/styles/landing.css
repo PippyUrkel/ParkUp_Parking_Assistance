@@ -42,7 +42,7 @@ html, body {
     content: '';
     height: 3px;
     width: 0%;
-    background: #00ffff;
+    background: #4285f4;
     position: absolute;
     left: 0;
     bottom: -10px;
@@ -81,7 +81,7 @@ button {
     margin: 20px 10px;
     border-radius: 25px;
     font-weight: bold;
-    border: 2px solid #00ffff;
+    border: 2px solid #4285f4;
     background: transparent;
     color: #fff;
     cursor: pointer;
@@ -91,7 +91,7 @@ button {
 
 span {
     width: 0;
-    background: #00ffff;
+    background: #4285f4;
     height: 100%;
     border-radius: 25px;
     position: absolute;
@@ -117,7 +117,7 @@ button:hover {
     border-right: 3px solid #fff; /* Cursor effect */
     display: inline-block; /* Allows for inline animations */
     animation: blink 0.75s step-end infinite; /* Blinking cursor */
-    color: #00ffff; /* Cyan color for text */
+    color: #4285f4; /* Cyan color for text */
     /* Neon cyan glow effect */
 }
 
@@ -154,5 +154,5 @@ button:hover {
 /* For Firefox */
 * {
     scrollbar-width: auto; /* Use 'thin' to make the scrollbar smaller */
-    scrollbar-color: #00d9ff rgba(0, 0, 0, 0.967); /* Thumb and track colors */
+    scrollbar-color: #4285f4 rgba(0, 0, 0, 0.967); /* Thumb and track colors */
 }
