@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Parking Overview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/customer_styles.css')}}">
+</head>
+<body>
+
+    <!-- Mall Map Section -->
+    <section class="customer-mall-map">
+        <h2 class="mall-map-title">Check Available Parking Spots</h2>
+        <div class="mall-map">
+            <!-- Example car spots -->
+            <div class="car-spot empty" style="top: 50px; left: 100px;">
+                <span>Empty Spot A1</span>
+            </div>
+            <div class="car-spot occupied" style="top: 150px; left: 200px;">
+                <span>Car: KA-01-HH-1234</span>
+            </div>
+            <div class="car-spot empty" style="top: 250px; left: 300px;">
+                <span>Empty Spot B3</span>
+            </div>
+            <!-- Add more car spots as needed -->
+        </div>
+        <button class="check-availability-btn" onclick="checkParkingAvailability()">Check if You Can Park</button>
+        <p id="availability-message"></p>
+    </section>
+
+    <!-- Pricing Breakdown Section -->
+    <section class="pricing-breakdown">
+        <h2>Parking Pricing Breakdown</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Duration (Hours)</th>
+                    <th>Price (INR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 Hour</td>
+                    <td>₹50</td>
+                </tr>
+                <tr>
+                    <td>2 Hours</td>
+                    <td>₹90</td>
+                </tr>
+                <tr>
+                    <td>3 Hours</td>
+                    <td>₹130</td>
+                </tr>
+                <tr>
+                    <td>4+ Hours</td>
+                    <td>₹150</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <script src="{{url_for('static', filename='scripts/customer_dasboard.js')}}"></script>
+</body>
+</html>

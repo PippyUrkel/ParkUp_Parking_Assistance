@@ -23,7 +23,7 @@ document.getElementById('google-login-btn').addEventListener('click', function()
         .then((result) => {
             console.log("User signed in:", result.user);
             // Redirect to a specific route, for example, '/dashboard'
-            window.location.href = '/dashboard'; // Change this to your desired route
+            window.location.href = '/customer-dashboard'; // Change in regard later on (hotfix)
         })
         .catch((error) => {
             console.error("Error during sign in:", error);

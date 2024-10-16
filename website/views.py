@@ -59,3 +59,7 @@ def dashboard():
         return render_template('dashboard.html', sensor_status = status)
     except:
         return render_template('dashboard.html', sensor_status = "blank")
+
+@views.route('/customer-dashboard')
+def customer_dashboard():
+    return render_template('customer_dashboard.html')
