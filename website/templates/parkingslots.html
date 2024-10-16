@@ -11,175 +11,332 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: center;
       font-family: 'Poppins', sans-serif;
-    }
-    .center {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: url({{ url_for('static', filename='images/bgforparking.jpg') }});
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #2196F3, #1976D2); /* Blue gradient */
+      color: #fff;
     }
 
-    .tickets {
-      width: 600px;
-      height: 470px;
-      border: 0.4mm solid rgba(0, 0, 0, 0.903);
-      border-radius: 3mm;
-      box-sizing: border-box;
-      padding: 10px;
-      font-family: Poppins, sans-serif;
-      background: rgba(207, 196, 196, 0.238);
-      box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
-      overflow-y: auto;
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff7c;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     }
-    .ticket-selector {
-      background: rgba(221, 216, 216, 0.726); /* Pure white with transparency */
+
+    .sidebar h2 {
+      color: #0d47a1;
+      text-align: center;
+    }
+
+    .sidebar button {
+      width: 100%;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: #0d47a1;
+    }
+
+    .content {
+      flex: 1;
       display: flex;
-      border-radius: 3mm;
-      align-items: center;
-      justify-content: space-between;
       flex-direction: column;
-      box-sizing: border-box;
+      justify-content: flex-start;
+      align-items: center;
       padding: 20px;
     }
 
-    .seats {
+    .main-container {
+      display: flex; /* Side by side layout */
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
+      height: calc(100vh - 40px);
     }
-    .all-seats {
+
+    .tickets, .parking-form {
+      width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.459);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-right: 20px; /* Space between slots and form */
+    }
+
+    .tickets:last-child {
+      margin-right: 0; /* No margin on the last element */
+    }
+
+    .tickets:hover, .parking-form:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    .tickets h3, .parking-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0d47a1;
+    }
+
+    .section-btns {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .seats {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
       grid-gap: 10px;
-      margin-top: 20px;
-      position: relative;
     }
+
     .seat {
-      width: 30px; /* Retained width */
-      height: 60px; /* Increased height for vertical rectangle */
-      background: white;
-      border-radius: 1mm; /* Slight border radius */
-      outline: 0.3mm solid rgb(180, 180, 180);
-      cursor: pointer;
+      width: 30px;
+      height: 60px;
+      background: #1976d2;
+      border-radius: 5px;
+      border: 1px solid #1976d2;
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 10px;
-    }
-    .seat.booked {
-      background: rgb(180, 180, 180);
-      border: 2px solid black; /* 2px width, solid style, black color */
-    }
-    .seat.allocated {
-      background: rgb(28, 185, 120);
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       color: white;
     }
-    input {
-      display: none;
+
+    .seat.booked {
+      background-color: #e0e0e0;
+      cursor: not-allowed;
+      border: 1px solid #999;
+      color: #333;
     }
+
+    .seat.allocated {
+  background-color: #e0e0e0;  /* Change to grey */
+  color: #333;  /* Text color for allocated spots */
+  cursor: not-allowed;  /* Make it unclickable */
+  border: 1px solid #999;  /* Border change for clarity */
+}
+
+
     .path {
       grid-column: span 10;
       height: 20px;
-      background: #444;
+      background: #ddd;
     }
-    .btn-container {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+
+    .parking-form .form-group {
+      margin-bottom: 15px;
     }
-    button {
-      background-color: rgb(60, 60, 60);
-      color: white;
+
+    .parking-form input {
+      width: 90%;
       padding: 10px;
-      border-radius: 2mm;
+      border-radius: 5px;
+      border: 1px solid #1976d2;
+      font-size: 14px;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .parking-form input:focus {
+      border-color: #42a5f5;
+      outline: none;
+    }
+
+    .parking-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #29b678;
+      color: white;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .parking-form button:hover {
+      background-color: #239e66;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Live clock */
+    .live-clock {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #e3e3e3;
+    }
+
+    /* Notification area */
+    .notification-area {
+      margin-top: 20px;
+      text-align: center;
+      color: #0d47a1;
+    }
+
+    /* Details display */
+    .details-display {
+      margin-top: 20px;
+      text-align: center;
+      color: #0d47a1;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="center">
-    <div class="tickets">
-      <div class="ticket-selector">
-        <div class="seats">
-          <div class="all-seats" id="all-seats">
-            <!-- Generate parking slots dynamically -->
-          </div>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <button id="view-expiring">View Expiring Cars</button>
+    <button id="view-today-cars">View Today's Arrivals</button>
+    <div class="notification-area" id="notification-area"></div>
+  </div>
+
+  <div class="content">
+    <div class="live-clock" id="clock"></div>
+
+    <div class="main-container">
+      <div class="tickets">
+        <h3>Select Parking Spot</h3>
+        <div class="section-btns">
+          <button class="section-btn" data-section="A">Block A</button>
+          <button class="section-btn" data-section="B">Block B</button>
+          <button class="section-btn" data-section="C">Block C</button>
         </div>
+        <div class="seats" id="all-seats"></div>
       </div>
-      <div class="btn-container">
-        <button id="confirm-btn">Confirm</button>
-        <button id="next-floor-btn">Next Floor</button>
+
+      <div class="parking-form">
+        <h2>Parking Information</h2>
+        <div class="form-group">
+          <label for="number-plate">Number Plate</label>
+          <input type="text" id="number-plate" placeholder="Enter Number Plate" required>
+        </div>
+        <div class="form-group">
+          <label for="hours">Number of Hours</label>
+          <input type="number" id="hours" min="1" placeholder="Enter Hours" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Total Price (Rupees)</label>
+          <input type="number" id="price" placeholder="Enter Total Price" readonly>
+        </div>
+        <div class="form-group">
+          <label for="parking-spot">Allocated Parking Spot</label>
+          <input type="text" id="parking-spot" placeholder="Allocated Spot" readonly>
+        </div>
+        <div class="form-group">
+          <button id="submit-parking">Submit</button>
+        </div>
+        <div class="message" id="message"></div>
+        <div class="details-display" id="details-display"></div> <!-- Added for details display -->
       </div>
     </div>
   </div>
 
   <script>
-    // Generate parking slots dynamically
-    const allSeatsDiv = document.getElementById('all-seats');
-    for (let i = 1; i <= 30; i++) {
-      const seatLabel = document.createElement('label');
-      seatLabel.classList.add('seat');
-      seatLabel.setAttribute('for', 's' + i);
-      seatLabel.textContent = 'J-' + i;
+    const bookedSpots = {
+      'A': ['A-5', 'A-10', 'A-25'],
+      'B': ['B-8', 'B-12', 'B-22'],
+      'C': ['C-1', 'C-15', 'C-27']
+    };
 
-      const seatInput = document.createElement('input');
-      seatInput.type = 'checkbox';
-      seatInput.id = 's' + i;
+    const todaysArrivals = ['ABC-1234', 'XYZ-5678', 'LMN-9101']; // Example data
 
-      allSeatsDiv.appendChild(seatInput);
-      allSeatsDiv.appendChild(seatLabel);
+    function generateSlots(section) {
+  const allSeatsDiv = document.getElementById('all-seats');
+  allSeatsDiv.innerHTML = '';
 
-      if (i % 10 === 0) {
-        const pathDiv = document.createElement('div');
-        pathDiv.classList.add('path');
-        allSeatsDiv.appendChild(pathDiv);
+  for (let i = 1; i <= 30; i++) {
+    const seatLabel = document.createElement('label');
+    seatLabel.classList.add('seat');
+    seatLabel.textContent = `${section}-${i}`;
+
+    allSeatsDiv.appendChild(seatLabel);
+
+    if (i % 10 === 0) {
+      const pathDiv = document.createElement('div');
+      pathDiv.classList.add('path');
+      allSeatsDiv.appendChild(pathDiv);
+    }
+
+    if (bookedSpots[section].includes(`${section}-${i}`)) {
+      seatLabel.classList.add('booked');
+    } else {
+      seatLabel.addEventListener('click', function() {
+        document.querySelectorAll('.seat.allocated').forEach(s => {
+          s.classList.remove('allocated');
+          s.classList.add('booked');  // Make the previously allocated seat grey
+        });
+
+        seatLabel.classList.add('allocated');  // Mark the current seat as allocated
+        document.getElementById('parking-spot').value = seatLabel.textContent;
+        calculateCost();  // Update price when a spot is selected
+      });
+    }
+  }
+}
+
+
+    function calculateCost() {
+      const hours = document.getElementById('hours').value;
+      const priceField = document.getElementById('price');
+      const allocatedSpot = document.getElementById('parking-spot').value;
+
+      // Assume each hour costs 50 Rupees
+      const costPerHour = 50;
+      if (allocatedSpot) {
+        priceField.value = hours * costPerHour;
+      } else {
+        priceField.value = '';
       }
     }
 
-    // Simulate some spots as already booked
-    const bookedSpots = ['J-5', 'J-10', 'J-25', 'J-35', 'J-55'];
-    document.querySelectorAll('.seat').forEach(seat => {
-      if (bookedSpots.includes(seat.textContent)) {
-        seat.classList.add('booked');
+    document.getElementById('hours').addEventListener('input', calculateCost);
+
+    document.getElementById('submit-parking').addEventListener('click', function() {
+      const numberPlate = document.getElementById('number-plate').value;
+      const allocatedSpot = document.getElementById('parking-spot').value;
+
+      if (numberPlate && allocatedSpot) {
+        document.getElementById('message').textContent = `Booking successful for ${numberPlate} at ${allocatedSpot}`;
+        document.getElementById('details-display').textContent = `Spot ${allocatedSpot} has been allocated.`;
+      } else {
+        document.getElementById('message').textContent = 'Please fill in all fields!';
       }
     });
 
-    // Handle seat selection
-    document.querySelectorAll('.seat').forEach(seat => {
-      seat.addEventListener('click', function() {
-        if (!this.classList.contains('booked')) {
-          this.classList.toggle('allocated');
-        }
+    document.getElementById('view-today-cars').addEventListener('click', function() {
+      const notificationArea = document.getElementById('notification-area');
+      notificationArea.innerHTML = `<strong>Today's Arrivals:</strong> ${todaysArrivals.join(', ')}`;
+    });
+
+    document.querySelectorAll('.section-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        generateSlots(section);
       });
     });
 
-    // Handle confirm button
-    document.getElementById('confirm-btn').addEventListener('click', function() {
-      const allocatedSeats = document.querySelectorAll('.seat.allocated');
-      allocatedSeats.forEach(seat => {
-        seat.classList.remove('allocated');
-        seat.classList.add('booked');
-      });
-      alert('Parking slots allocated!');
-    });
+    function updateClock() {
+      const now = new Date();
+      const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', options);
+    }
 
-    // Handle next floor button
-    document.getElementById('next-floor-btn').addEventListener('click', function() {
-      alert('Switching to the next floor!');
-      // Add logic for next floor parking slots
-    });
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call to set clock immediately
   </script>
 </body>
 </html>
