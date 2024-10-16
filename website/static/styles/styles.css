@@ -110,8 +110,9 @@ input:checked + .slider:before {
 header {
     text-align: center;
     padding: 30px 0;
-    background-color: #007bff;
     color: white;
+    background: linear-gradient(135deg, #2b05d4 0%, #12bed4 100%); /* Dark gradient background */
+
     transition: background-color 0.3s ease;
 }
 
@@ -142,6 +143,8 @@ body.dark-theme .card-container {
     width: 300px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+
 }
 
 body.dark-theme .card {
@@ -181,7 +184,7 @@ body.dark-theme .sensor-diagnostics {
     background-color: #2e2e2e;
 }
 
-.sensor-status {
+.sensor-status-style {
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -218,4 +221,16 @@ body.dark-theme .offline {
 
 body.dark-theme .error {
     background-color: #5a1a1a;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

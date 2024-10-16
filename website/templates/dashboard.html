@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mall Parking System</title>
     <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}">
+    <script>
+        const intervalId = setInterval(function() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    const sensorStatusElement = document.getElementById('sensor-status');
+                    sensorStatusElement.innerText = data.sensor_status;
+    
+                    if (data.sensor_status === "blank") {
+                        clearInterval(intervalId);  // Stop the repeated requests
+                        console.log("Sensor status is 'blank', stopping requests.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching sensor status:', error);
+                });
+        }, 1000); 
+    </script>
+    
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{url_for('views.home')}}">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
@@ -26,19 +45,20 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Mall Parking System</h1>
+        <h1>Welcome to the park up Parking Assistance Dashboard</h1>
         <p>Efficient and Smart Parking Solutions</p>
     </header>
 
     <!-- Main Content -->
     <main>
+        <div id="sensor-status">{{ sensor_status }}</div>
         <section class="card-container">
             <!-- Card 1 -->
             <div class="card" id="car1">
                 <h2>Ravi's Car</h2>
                 <img src="{{url_for('static', filename='images/car1.png')}}" alt="Ravi's Car">
                 <p>Number Plate: KA-01-HH-1234</p>
-                <p>Status: <span class="status parked">Parked</span></p>
+                <p>Status: <span class="status parked">{{sensor_status}}</span></p>
                 <button onclick="changeStatus('car1')">Change Status</button>
             </div>
             <!-- Card 2 -->
@@ -57,13 +77,23 @@
                 <p>Status: <span class="status servicing">In Servicing</span></p>
                 <button onclick="changeStatus('car3')">Change Status</button>
             </div>
+            <!--Add a new Car-->
+            <div class="card" id="car3">
+                <h2>Add a Car</h2>
+                <img src="{{url_for('static', filename='images/car_new.png')}}" alt="Sameer's Car">
+                <p>Number Plate: XX-XX-XX-XXXX</p>
+                <p>Status: <span class="status servicing">Blank</span></p>
+                <button onclick="changeStatus('car3')">Change Status</button>
+            </div>
         </section>
 
         <!-- Sensor Diagnostics Section -->
         <section class="sensor-diagnostics">
             <h2>Parking Sensor Diagnostics</h2>
-            <div class="sensor-status">
-                <p>Sensor A1: <span class="sensor working">Working</span></p>
+            <div class="sensor-status-style">
+                <div id='sensor-status'>
+                    <p id="sensor-status">Sensor A1: <span class="sensor working">{{ sensor_status }}</span></p>
+                </div>
                 <p>Sensor B2: <span class="sensor offline">Offline</span></p>
                 <p>Sensor C3: <span class="sensor working">Working</span></p>
                 <p>Sensor D4: <span class="sensor error">Error</span></p>
@@ -73,5 +103,7 @@
 
     <!-- JavaScript -->
     <script src="{{url_for('static', filename='scripts/script.js')}}"></script>
+
+    
 </body>
 </html>
