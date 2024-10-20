@@ -24,6 +24,7 @@ def status():
     try:
         if ser.in_waiting > 0:
             sensor_data = ser.readline().decode('utf-8').strip()
+            print(sensor_data)
             if "Object detected" in sensor_data:
                 status = "Object is near"
             else:
@@ -63,3 +64,7 @@ def dashboard():
 @views.route('/customer-dashboard')
 def customer_dashboard():
     return render_template('customer_dashboard.html')
+
+@views.route('/parking-slots')
+def parking_slots():
+    return render_template('parkingslots.html')
